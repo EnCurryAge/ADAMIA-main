@@ -1,6 +1,6 @@
-# ADA-MIA：Black-Box Membership Inference Attacks against ContrastiveLearning via Aggressive Data Augmentation
+# ADA-MIA：Black-Box Membership Inference Attacks against Contrastive Learning via Aggressive Data Augmentation
 ## About The Project
-This is the official code for our paper "Black-Box Membership Inference Attacks against ContrastiveLearning via Aggressive Data Augmentation".
+This is the official code for our paper "Black-Box Membership Inference Attacks against Contrastive Learning via Aggressive Data Augmentation".
 ADA-MIA allows an adversary to conduct membership inference attack against contrastive pre-trained encoders via aggressive data augmentations, without requiring any priori knowledge.
 The main function is contained in `Data_Augmentation.py`, `Gen_Mem_Features.py`, and `DC_Inference.py`.
 
