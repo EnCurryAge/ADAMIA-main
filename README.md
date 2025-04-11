@@ -7,7 +7,7 @@ ADA-MIA allows an adversary to conduct membership inference attack against contr
 This code provides the following MIA approach:
 - **Method: ADA-MIA (MIA using aggressive data augmentations, which is named ADA-MIA in our paper)**. Given a batch of images to be inferred, a spectrum of data augmentations are applied on them. Then, the adversary calculates similarities between each image and all its augmented counterparts, which are denoted as membership features. Finally, all membership features are collected and sent to an unsupervised clustering algorithm.
 
-The main function is contained in **Data_Augmentation.py**, **Gen_Mem_Features.py**, and **DC_Inference.py**.
+The main function is contained in `Data_Augmentation.py`, `Gen_Mem_Features.py`, and `DC_Inference.py`.
 
 ## Getting Started
 ### Prerequisites
