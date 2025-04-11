@@ -2,24 +2,19 @@
 ## About The Project
 This is the official code for our paper "Black-Box Membership Inference Attacks against ContrastiveLearning via Aggressive Data Augmentation".
 ADA-MIA allows an adversary to conduct membership inference attack against contrastive pre-trained encoders via aggressive data augmentations, without requiring any priori knowledge.
-
-## Presented MIA Methods
-This code provides the following MIA approach:
-- **Method: ADA-MIA (MIA using aggressive data augmentations, which is named ADA-MIA in our paper)**. Given a batch of images to be inferred, a spectrum of data augmentations are applied on them. Then, the adversary calculates similarities between each image and all its augmented counterparts, which are denoted as membership features. Finally, all membership features are collected and sent to an unsupervised clustering algorithm.
-
 The main function is contained in `Data_Augmentation.py`, `Gen_Mem_Features.py`, and `DC_Inference.py`.
 
 ## Getting Started
 ### Prerequisites
 **ADA-MIA** requires the following packages: 
-- Python 3.8.17
-- torch 1.8.1+cu101
-- torchvision 0.9.1+cu101
-- Scikit-learn 1.3.0
-- Numpy 1.24.4
-- Scipy 1.10.1
-- xlsxwriter 3.1.2
-- opacus 0.13.0
+- Python: 3.8.17
+- torch: 1.8.1+cu101
+- torchvision: 0.9.1+cu101
+- Scikit-learn: 1.3.0
+- Numpy: 1.24.4
+- Scipy: 1.10.1
+- xlsxwriter: 3.1.2
+- opacus: 0.13.0
 
 ### File Structure 
 ```
@@ -50,18 +45,19 @@ There are several parts of the code:
 - `DC_Inference.py`: This file contains the unsupervised inference via Deep-Cluster, which corresponds to the **Section 4.3** in our paper.
 
 ## Parameter Setting of ADA-MIA
-The attack settings of Gradient-Leaks are determined in the parameter **Data_Augmentation.py** in **DC_Inference.py**.
+The attack settings of Gradient-Leaks are determined in the parameter `Data_Augmentation.py` in `DC_Inference.py`.
 - ***Progressive Data Augmentation Settings***
--- `max`: the maximum strength of data augmentation
--- `interval`: the interval of data augmentation, which correspond to the parameter $\lambda$.
+   - `max`: the maximum strength of data augmentation
+   - `interval`: the interval of data augmentation, which correspond to the parameter $\lambda$.
+
 - ***Deep-Cluster training Settings***
--- `inference_epochs`: the num of training epoch of Deep-Cluster
--- `inference_rounds`: the num of rounds to conduct unsupervised inference
--- `hidden_neurons`: the num of hidden neurons within MLP in Deep-Cluster
--- `output_dim`: the dimension of the output of MLP in Deep-Cluster
--- `learning_rate`: the lr when training MLP in Deep-Cluster
--- `weight_decay`: the weight decay when training MLP in Deep-Cluster
--- `batch_size`: the bs when conducting inference
+  - `inference_epochs`: the num of training epoch of Deep-Cluster
+  - `inference_rounds`: the num of rounds to conduct unsupervised inference
+  - `hidden_neurons`: the num of hidden neurons within MLP in Deep-Cluster
+  -  `output_dim`: the dimension of the output of MLP in Deep-Cluster
+  -  `learning_rate`: the lr when training MLP in Deep-Cluster
+  -  `weight_decay`: the weight decay when training MLP in Deep-Cluster
+  -  `batch_size`: the bs when conducting inference
 
 ## Execute ADA-MIA
 1. Run `MoCo_Pretrain.py` or `SimCLR_Pretrain.py` to get target encoders.
