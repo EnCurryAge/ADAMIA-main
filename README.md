@@ -1,6 +1,7 @@
-# ADA-MIA
+# ADA-MIA：Black-Box Membership Inference Attacks against ContrastiveLearning via Aggressive Data Augmentation
 ## About The Project
-ADA-MIA allows an adversary to conduct membership inference attack against contrastive pre-trained encoders via aggressive data augmentations.
+This is the official code for our paper "Black-Box Membership Inference Attacks against ContrastiveLearning via Aggressive Data Augmentation".
+ADA-MIA allows an adversary to conduct membership inference attack against contrastive pre-trained encoders via aggressive data augmentations, without requiring any priori knowledge.
 
 ## Presented MIA Methods
 This code provides the following MIA approach:
@@ -37,32 +38,32 @@ ADA-MIA
 
 There are several parts of the code:
 - datasets folder: This folder contains the training and testing data for the target model.  In order to reduce the memory space, we just list the  links to theset dataset here. 
-   - CIFAR-10: https://www.cs.toronto.edu/~kriz/cifar-10-python.tar.gz
-   - CIFAR-100: https://www.cs.toronto.edu/~kriz/cifar-100-python.tar.gz
-   - STL-10: http://ai.stanford.edu/~acoates/stl10/stl10_binary.tar.gz
-   - Tiny-ImageNet-200: http://cs231n.stanford.edu/tiny-imagenet-200.zip
+   - `CIFAR-10`: https://www.cs.toronto.edu/~kriz/cifar-10-python.tar.gz
+   - `CIFAR-100`: https://www.cs.toronto.edu/~kriz/cifar-100-python.tar.gz
+   - `STL-10`: http://ai.stanford.edu/~acoates/stl10/stl10_binary.tar.gz
+   - `Tiny-ImageNet-200`: http://cs231n.stanford.edu/tiny-imagenet-200.zip
 
-- MoCo-Pretrain.py: This file contains the pre-training of contrastive encoders using MoCo.
-- MoCo-Pretrain.py: This file contains the pre-training of contrastive encoders using SimCLR.
-- Data_Augmentation.py: This file contains the generation of data augmentations from weak to strong, which corresponds to the **Section 4.2** in our paper.
-- Gen_Mem_Features.py: This file contains the process of membership feature generation.
-- DC_Inference.py: This file contains the unsupervised inference via Deep-Cluster, which corresponds to the **Section 4.3** in our paper.
+- `MoCo-Pretrain.py`: This file contains the pre-training of contrastive encoders using MoCo.
+- `MoCo-Pretrain.py`: This file contains the pre-training of contrastive encoders using SimCLR.
+- `Data_Augmentation.py`: This file contains the generation of data augmentations from weak to strong, which corresponds to the **Section 4.2** in our paper.
+- `Gen_Mem_Features.py`: This file contains the process of membership feature generation.
+- `DC_Inference.py`: This file contains the unsupervised inference via Deep-Cluster, which corresponds to the **Section 4.3** in our paper.
 
 ## Parameter Setting of ADA-MIA
 The attack settings of Gradient-Leaks are determined in the parameter **Data_Augmentation.py** in **DC_Inference.py**.
 - ***Progressive Data Augmentation Settings***
--- max: the maximum strength of data augmentation
--- interval: the interval of data augmentation, which correspond to the parameter $\lambda$.
+-- `max`: the maximum strength of data augmentation
+-- `interval`: the interval of data augmentation, which correspond to the parameter $\lambda$.
 - ***Deep-Cluster training Settings***
--- inference_epochs: the num of training epoch of Deep-Cluster
--- inference_rounds: the num of rounds to conduct unsupervised inference
--- hidden_neurons: the num of hidden neurons within MLP in Deep-Cluster
--- output_dim: the dimension of the output of MLP in Deep-Cluster
--- learning_rate: the lr when training MLP in Deep-Cluster
--- weight_decay: the weight decay when training MLP in Deep-Cluster
--- batch_size: the bs when conducting inference
+-- `inference_epochs`: the num of training epoch of Deep-Cluster
+-- `inference_rounds`: the num of rounds to conduct unsupervised inference
+-- `hidden_neurons`: the num of hidden neurons within MLP in Deep-Cluster
+-- `output_dim`: the dimension of the output of MLP in Deep-Cluster
+-- `learning_rate`: the lr when training MLP in Deep-Cluster
+-- `weight_decay`: the weight decay when training MLP in Deep-Cluster
+-- `batch_size`: the bs when conducting inference
 
 ## Execute ADA-MIA
-1. Run **MoCo_Pretrain.py** or **SimCLR_Pretrain.py** to get target encoders.
-2. Run **Gen_Mem_Features.py** to obtain membership features for images to be inferred.
-3. Run **DC_Inference.py** to conduct inference with Deep-Cluster against these images.
+1. Run `MoCo_Pretrain.py` or `SimCLR_Pretrain.py` to get target encoders.
+2. Run `Gen_Mem_Features.py` to obtain membership features for images to be inferred.
+3. Run `DC_Inference.py` to conduct inference with Deep-Cluster against these images.
