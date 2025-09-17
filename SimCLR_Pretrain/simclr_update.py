@@ -74,7 +74,7 @@ class SimCLR(object):
     def train(self):
         # privacy_engine = PrivacyEngine(
         #     module=self.model,
-        #     epochs=1,
+        #     epochs=50,
         #     target_delta=1e-5,
         #     target_epsilon=50.0,
         #     max_grad_norm=1.2,
@@ -144,6 +144,9 @@ class SimCLR(object):
                         self.model_checkpoints_folder, 'model_%s.pth' % (self.opt.mode)))
                 else:
                     raise ValueError("self.opt.pretrain NOT CORRECT!")
+
+            # DELTA = 1e-5
+            # epsilon, best_alpha = self.optimizer.privacy_engine.get_privacy_spent(DELTA)
 
             if loss < best_loss:
                 tol = 0
