@@ -55,6 +55,9 @@ def train(encoder_q, encoder_k, data_loader, train_optimizer):
         total_loss += loss.item() * x_q.size(0)
         train_bar.set_description('Train Epoch: [{}/{}] Loss: {:.4f}'.format(epoch, epochs, total_loss / total_num))
 
+        # DELTA = 1e-5
+        # epsilon, best_alpha = optimizer.privacy_engine.get_privacy_spent(DELTA)
+
     return total_loss / total_num
 
 
@@ -183,7 +186,7 @@ if __name__ == '__main__':
 
     # privacy_engine = PrivacyEngine(
     #     module=model_q,
-    #     epochs=1,
+    #     epochs=50,
     #     target_delta=1e-5,
     #     target_epsilon=50.0,
     #     max_grad_norm=1.2,
